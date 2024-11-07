@@ -5,10 +5,13 @@ import asyncio
 import contextlib
 import os
 import sys
+import traceback
 
 
 with contextlib.suppress(ImportError):
     import serial
+    
+from pymodbus.logging import Log
 
 
 class SerialTransport(asyncio.Transport):
@@ -168,14 +171,22 @@ async def create_serial_connection(
     parity=None,
     stopbits=None,
     timeout=None,
-) -> tuple[asyncio.Transport, asyncio.BaseProtocol]:
+) -> tuple[asyncio.Transport | None, asyncio.BaseProtocol | None]:
     """Create a connection to a new serial port instance."""
     protocol = protocol_factory()
-    transport = SerialTransport(loop, protocol, url,
-                    baudrate,
-                    bytesize,
-                    parity,
-                    stopbits,
-                    timeout)
-    loop.call_soon(transport.setup)
-    return transport, protocol
+    try:
+        transport = SerialTransport(loop, protocol, url,
+                        baudrate,
+                        bytesize,
+                        parity,
+                        stopbits,
+                        timeout)
+        loop.call_soon(transport.setup)
+        return transport, protocol
+    except Exception as exc:
+        Log.error(
+                "Error while creating serial connection: {}; {}",
+                exc,
+                traceback.format_exc(),
+            )
+        return None, None

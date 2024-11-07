@@ -6,6 +6,7 @@ import asyncio
 import os
 import traceback
 from contextlib import suppress
+from enum import Enum
 
 from pymodbus.datastore import ModbusServerContext
 from pymodbus.device import ModbusControlBlock, ModbusDeviceIdentification
@@ -77,20 +78,23 @@ class ModbusServerRequestHandler(ModbusProtocol):
             # schedule the connection handler on the event loop
             self.handler_task = asyncio.create_task(self.handle())
             self.handler_task.set_name("server connection handler")
+            
+            # Call connected callback
+            self.server.callback_connected()
         except Exception as exc:  # pylint: disable=broad-except
             Log.error(
                 "Server callback_connected exception: {}; {}",
                 exc,
                 traceback.format_exc(),
             )
+            # Save exception to server
+            self.server.callback_inner_error(exc)
 
     def callback_disconnected(self, call_exc: Exception | None) -> None:
         """Call when connection is lost."""
         try:
             if self.handler_task:
                 self.handler_task.cancel()
-            if hasattr(self.server, "on_connection_lost"):
-                self.server.on_connection_lost()
             if call_exc is None:
                 self._log_exception()
             else:
@@ -100,12 +104,17 @@ class ModbusServerRequestHandler(ModbusProtocol):
                     call_exc,
                 )
             self.running = False
+            
+            # Run disconnected callback
+            self.server.callback_disconnected(call_exc)
         except Exception as exc:  # pylint: disable=broad-except
             Log.error(
                 "Datastore unable to fulfill request: {}; {}",
                 exc,
                 traceback.format_exc(),
             )
+            # Save exception to server
+            self.server.callback_inner_error(exc)
 
     async def inner_handle(self):
         """Handle handler."""
@@ -250,6 +259,13 @@ class ModbusServerRequestHandler(ModbusProtocol):
 class ModbusBaseServer(ModbusProtocol):
     """Common functionality for all server classes."""
 
+    class Exit_reason(Enum):
+        ALREADY_STARTED = 0
+        SHUTDOWN_REQUESTED = 1
+        CONNECTION_ERROR = 2
+        STARTUP_ERROR = 3
+        INNER_ERROR = 4
+
     def __init__(
         self,
         params: CommParams,
@@ -280,39 +296,82 @@ class ModbusBaseServer(ModbusProtocol):
 
         self.framer = FRAMER_NAME_TO_CLASS[framer]
         self.serving: asyncio.Future = asyncio.Future()
+        self.exc: Exception | None = None
 
     def callback_new_connection(self):
         """Handle incoming connect."""
         return ModbusServerRequestHandler(self)
 
-    async def shutdown(self):
+    async def shutdown(self) -> None:
         """Close server."""
         if not self.serving.done():
-            self.serving.set_result(True)
-        self.close()
+            # Close not called yet
+            self.serving.set_result(self.Exit_reason.SHUTDOWN_REQUESTED)
+            self.close()
+            self.callback_disconnected(None)
+        else:
+            # Server should be closed by now, reset variables to be sure
+            self.close()
 
-    async def serve_forever(self):
+    async def serve_forever(self) -> None:
         """Start endless loop."""
         if self.transport:
-            raise RuntimeError(
+            exc = RuntimeError(
                 "Can't call serve_forever on an already running server object"
             )
-        await self.listen()
-        Log.info("Server listening.")
-        await self.serving
-        Log.info("Server graceful shutdown.")
-
+            Log.error("{}", exc, traceback.format_exc())
+            return
+        
+        # Reset visible error
+        self.__reset_error()
+        
+        # Start server
+        exc = await self.listen()
+        if exc is False:
+            # Unable to start server
+            self.__error_action(self.Exit_reason.STARTUP_ERROR)
+        else:
+            # Server started
+            Log.info("Server listening.")
+            await self.serving
+            
+            if self.serving.result() == self.Exit_reason.SHUTDOWN_REQUESTED:
+                Log.info("Server graceful shutdown.")
+            else:
+                Log.info("Server shutdown due to disconnect.")
+        
+    def __reset_error(self) -> None:
+        """Reset variables niforming user about error raised."""
+        self.exc = None
+    
+    def __error_action(self, er: Exit_reason) -> None:
+        """Close server when error."""
+        # Save error, mark as done
+        if not self.serving.done():
+            self.serving.set_result(er)
+        # Close 
+        self.close()
+    
     def callback_connected(self) -> None:
         """Call when connection is succcesfull."""
 
     def callback_disconnected(self, exc: Exception | None) -> None:
         """Call when connection is lost."""
         Log.debug("callback_disconnected called: {}", exc)
+        # Save exception
+        if exc:
+            self.__error_action(self.Exit_reason.CONNECTION_ERROR)
 
     def callback_data(self, data: bytes, addr: tuple | None = None) -> int:
         """Handle received data."""
         Log.debug("callback_data called: {} addr={}", data, ":hex", addr)
         return 0
+    
+    def callback_inner_error(self, exc: Exception) -> None:
+        """Method called when internal error is raised."""
+        Log.debug("callback_inner_error called: {}", exc)
+        self.__error_action(self.Exit_reason.INNER_ERROR)
+        
 
 class ModbusTcpServer(ModbusBaseServer):
     """A modbus threaded tcp socket server.
