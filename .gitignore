@@ -16,7 +16,7 @@ __pycache__/
 prof/
 dist/pymodbus*
 build/html
-/pymodbus.egg-info/
+/pymodbus_3p3v.egg-info/
 venv
 downloaded_files/
 pymodbus.log

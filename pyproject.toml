@@ -3,12 +3,11 @@ requires = ["setuptools>=68.2.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pymodbus"
+name = "pymodbus_3p3v"
 dynamic = ["version"]
 license = {text = "BSD-3-Clause"}
 authors = [{name = "Galen Collins"}, {name = "Jan Iversen"}]
-maintainers = [{name = "dhoomakethu"}, {name = "janiversen"}]
-description = "A fully featured modbus protocol stack in python"
+description = "A fully featured modbus protocol stack in python. Fixed serial not showing error. Changed API to output server exit reason."
 keywords = ["modbus", "asyncio", "scada", "client", "server", "simulator"]
 readme = "README.rst"
 classifiers = [
@@ -33,11 +32,8 @@ classifiers = [
 requires-python = ">=3.9.0"
 
 [project.urls]
-Homepage = "https://github.com/pymodbus-dev/pymodbus/"
-"Source Code" = "https://github.com/pymodbus-dev/pymodbus"
-"Bug Reports" = "https://github.com/pymodbus-dev/pymodbus/issues"
-"Docs: Dev" = "https://pymodbus.readthedocs.io/en/latest/?badge=latest"
-Discord = "https://discord.gg/vcP8qAz2"
+Homepage = "https://github.com/3p3v/pymodbus/"
+"Source Code" = "https://github.com/3p3v/pymodbus"
 
 [project.scripts]
 "pymodbus.simulator" = "pymodbus.server.simulator.main:main"
