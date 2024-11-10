@@ -259,13 +259,6 @@ class ModbusServerRequestHandler(ModbusProtocol):
 class ModbusBaseServer(ModbusProtocol):
     """Common functionality for all server classes."""
 
-    class Exit_reason(Enum):
-        ALREADY_STARTED = 0
-        SHUTDOWN_REQUESTED = 1
-        CONNECTION_ERROR = 2
-        STARTUP_ERROR = 3
-        INNER_ERROR = 4
-
     def __init__(
         self,
         params: CommParams,
@@ -306,7 +299,7 @@ class ModbusBaseServer(ModbusProtocol):
         """Close server."""
         if not self.serving.done():
             # Close not called yet
-            self.serving.set_result(self.Exit_reason.SHUTDOWN_REQUESTED)
+            self.serving.set_result(True)
             self.close()
             self.callback_disconnected(None)
         else:
@@ -322,35 +315,26 @@ class ModbusBaseServer(ModbusProtocol):
             Log.error("{}", exc, traceback.format_exc())
             return
         
-        # Reset visible error
-        self.__reset_error()
-        
         # Start server
         exc = await self.listen()
         if exc is False:
             # Unable to start server
-            self.__error_action(self.Exit_reason.STARTUP_ERROR)
+            self.__error_action()
         else:
             # Server started
             Log.info("Server listening.")
             await self.serving
             
-            if self.serving.result() == self.Exit_reason.SHUTDOWN_REQUESTED:
+            if self.serving.result() == False:
                 Log.info("Server graceful shutdown.")
             else:
                 Log.info("Server shutdown due to disconnect.")
-        
-    def __reset_error(self) -> None:
-        """Reset variables niforming user about error raised."""
-        self.exc = None
     
-    def __error_action(self, er: Exit_reason) -> None:
+    def __error_action(self) -> None:
         """Close server when error."""
         # Save error, mark as done
         if not self.serving.done():
-            self.serving.set_result(er)
-        # Close 
-        self.close()
+            self.serving.set_result(False)
     
     def callback_connected(self) -> None:
         """Call when connection is succcesfull."""
@@ -360,7 +344,9 @@ class ModbusBaseServer(ModbusProtocol):
         Log.debug("callback_disconnected called: {}", exc)
         # Save exception
         if exc:
-            self.__error_action(self.Exit_reason.CONNECTION_ERROR)
+            self.__error_action()
+            # Close 
+        self.close()
 
     def callback_data(self, data: bytes, addr: tuple | None = None) -> int:
         """Handle received data."""
@@ -370,7 +356,9 @@ class ModbusBaseServer(ModbusProtocol):
     def callback_inner_error(self, exc: Exception) -> None:
         """Method called when internal error is raised."""
         Log.debug("callback_inner_error called: {}", exc)
-        self.__error_action(self.Exit_reason.INNER_ERROR)
+        self.__error_action()
+        # Close 
+        self.close()
         
 
 class ModbusTcpServer(ModbusBaseServer):

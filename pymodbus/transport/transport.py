@@ -249,20 +249,15 @@ class ModbusProtocol(asyncio.BaseProtocol):
         """Handle generic listen and call on to specific transport listen."""
         Log.debug("Awaiting connections {}", self.comm_params.comm_name)
         self.is_closing = False
-        try:
-            self.transport = await self.call_create()
-            if isinstance(self.transport, tuple):
-                self.transport = self.transport[0]
+        self.transport = await self.call_create()
+        if isinstance(self.transport, tuple):
+            self.transport = self.transport[0]
 
-            if self.transport is None:
-                # Exception occured while initializing
-                Log.warning("Failed to start server")
-                return False
-                
-        except OSError as exc:
-            Log.warning("Failed to start server {}", exc)
-            self.__close()
+        if self.transport is None:
+            # Exception occured while initializing
+            Log.warning("Failed to start server")
             return False
+                
         return True
 
     # --------------------------------------- #
