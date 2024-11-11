@@ -325,7 +325,7 @@ class ModbusBaseServer(ModbusProtocol):
             Log.info("Server listening.")
             await self.serving
             
-            if self.serving.result() == False:
+            if self.serving.result() == True:
                 Log.info("Server graceful shutdown.")
             else:
                 Log.info("Server shutdown due to disconnect.")
