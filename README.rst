@@ -242,7 +242,7 @@ Example Code
 ------------
 For those of you that just want to get started fast, here you go::
 
-    from pymodbus.client import ModbusTcpClient
+    from pymodbus_3p3v.client import ModbusTcpClient
 
     client = ModbusTcpClient('MyDevice.lan')
     client.connect()

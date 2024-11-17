@@ -11,13 +11,13 @@ import collections
 import logging
 import textwrap
 
-from pymodbus import pymodbus_apply_logging_config
-from pymodbus.framer import (
+from pymodbus_3p3v import pymodbus_apply_logging_config
+from pymodbus_3p3v.framer import (
     FramerAscii,
     FramerRTU,
     FramerSocket,
 )
-from pymodbus.pdu import DecodePDU
+from pymodbus_3p3v.pdu import DecodePDU
 
 
 _logger = logging.getLogger(__file__)

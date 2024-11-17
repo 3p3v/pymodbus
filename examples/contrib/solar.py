@@ -12,15 +12,15 @@ from enum import Enum
 from math import log10
 from time import sleep
 
-from pymodbus import pymodbus_apply_logging_config
+from pymodbus_3p3v import pymodbus_apply_logging_config
 
 # --------------------------------------------------------------------------- #
 # import the various client implementations
 # --------------------------------------------------------------------------- #
-from pymodbus.client import ModbusTcpClient
-from pymodbus.exceptions import ModbusException
-from pymodbus.pdu import ExceptionResponse
-from pymodbus import FramerType
+from pymodbus_3p3v.client import ModbusTcpClient
+from pymodbus_3p3v.exceptions import ModbusException
+from pymodbus_3p3v.pdu import ExceptionResponse
+from pymodbus_3p3v import FramerType
 
 
 HOST = "modbusServer.lan"

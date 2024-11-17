@@ -6,15 +6,15 @@ from unittest import mock
 import pytest
 import serial
 
-from pymodbus import FramerType
-from pymodbus.client import (
+from pymodbus_3p3v import FramerType
+from pymodbus_3p3v.client import (
     ModbusSerialClient,
     ModbusTcpClient,
     ModbusTlsClient,
     ModbusUdpClient,
 )
-from pymodbus.exceptions import ConnectionException
-from pymodbus.framer import (
+from pymodbus_3p3v.exceptions import ConnectionException
+from pymodbus_3p3v.framer import (
     FramerAscii,
     FramerRTU,
     FramerSocket,

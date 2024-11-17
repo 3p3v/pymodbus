@@ -3,7 +3,7 @@
 """Pymodbus Synchronous Client Examples.
 
 The following is an example of how to use the synchronous modbus client
-implementation from pymodbus::
+implementation from pymodbus_3p3v::
 
     with ModbusClient("127.0.0.1") as client:
         result = client.read_coils(1,10)
@@ -13,10 +13,10 @@ implementation from pymodbus::
 import asyncio
 import struct
 
-from pymodbus import FramerType
-from pymodbus.client import AsyncModbusTcpClient as ModbusClient
-from pymodbus.pdu import ModbusExceptions, ModbusPDU
-from pymodbus.pdu.bit_read_message import ReadCoilsRequest
+from pymodbus_3p3v import FramerType
+from pymodbus_3p3v.client import AsyncModbusTcpClient as ModbusClient
+from pymodbus_3p3v.pdu import ModbusExceptions, ModbusPDU
+from pymodbus_3p3v.pdu.bit_read_message import ReadCoilsRequest
 
 
 # --------------------------------------------------------------------------- #

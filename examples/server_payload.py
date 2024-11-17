@@ -18,13 +18,13 @@ except ImportError:
     sys.exit(-1)
 
 
-from pymodbus.constants import Endian
-from pymodbus.datastore import (
+from pymodbus_3p3v.constants import Endian
+from pymodbus_3p3v.datastore import (
     ModbusSequentialDataBlock,
     ModbusServerContext,
     ModbusSlaveContext,
 )
-from pymodbus.payload import BinaryPayloadBuilder
+from pymodbus_3p3v.payload import BinaryPayloadBuilder
 
 
 _logger = logging.getLogger(__name__)

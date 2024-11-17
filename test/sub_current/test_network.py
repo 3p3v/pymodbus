@@ -6,9 +6,9 @@ from collections.abc import Callable
 
 import pytest
 
-from pymodbus.client import AsyncModbusTcpClient
-from pymodbus.logging import Log
-from pymodbus.transport import NULLMODEM_HOST, CommParams, ModbusProtocol
+from pymodbus_3p3v.client import AsyncModbusTcpClient
+from pymodbus_3p3v.logging import Log
+from pymodbus_3p3v.transport import NULLMODEM_HOST, CommParams, ModbusProtocol
 
 
 class ModbusProtocolStub(ModbusProtocol):

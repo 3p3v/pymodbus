@@ -1,12 +1,12 @@
 """Test device."""
-from pymodbus.constants import DeviceInformation
-from pymodbus.device import (
+from pymodbus_3p3v.constants import DeviceInformation
+from pymodbus_3p3v.device import (
     DeviceInformationFactory,
     ModbusControlBlock,
     ModbusDeviceIdentification,
     ModbusPlusStatistics,
 )
-from pymodbus.events import RemoteReceiveEvent
+from pymodbus_3p3v.events import RemoteReceiveEvent
 
 
 # ---------------------------------------------------------------------------#

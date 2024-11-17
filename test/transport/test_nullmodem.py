@@ -4,7 +4,7 @@ from unittest import mock
 
 import pytest
 
-from pymodbus.transport.transport import NullModem
+from pymodbus_3p3v.transport.transport import NullModem
 
 
 class TestTransportNullModem:

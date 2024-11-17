@@ -9,7 +9,7 @@ from unittest import mock
 import pytest
 import serial
 
-from pymodbus.transport.serialtransport import (
+from pymodbus_3p3v.transport.serialtransport import (
     SerialTransport,
     create_serial_connection,
 )

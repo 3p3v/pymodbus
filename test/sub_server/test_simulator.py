@@ -7,11 +7,11 @@ from unittest.mock import mock_open, patch
 
 import pytest
 
-from pymodbus.client import AsyncModbusTcpClient
-from pymodbus.datastore import ModbusSimulatorContext
-from pymodbus.datastore.simulator import Cell, CellType, Label
-from pymodbus.server import ModbusSimulatorServer
-from pymodbus.transport import NULLMODEM_HOST
+from pymodbus_3p3v.client import AsyncModbusTcpClient
+from pymodbus_3p3v.datastore import ModbusSimulatorContext
+from pymodbus_3p3v.datastore.simulator import Cell, CellType, Label
+from pymodbus_3p3v.server import ModbusSimulatorServer
+from pymodbus_3p3v.transport import NULLMODEM_HOST
 
 
 FX_READ_BIT = 1

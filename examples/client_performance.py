@@ -16,8 +16,8 @@ Averages 0.33 ms pr call and 0.03 ms pr register.
 import asyncio
 import time
 
-from pymodbus import FramerType
-from pymodbus.client import AsyncModbusSerialClient, ModbusSerialClient
+from pymodbus_3p3v import FramerType
+from pymodbus_3p3v.client import AsyncModbusSerialClient, ModbusSerialClient
 
 
 LOOP_COUNT = 1000

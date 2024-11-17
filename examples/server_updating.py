@@ -44,7 +44,7 @@ except ImportError:
           for more information.")
     sys.exit(-1)
 
-from pymodbus.datastore import (
+from pymodbus_3p3v.datastore import (
     ModbusSequentialDataBlock,
     ModbusServerContext,
     ModbusSlaveContext,

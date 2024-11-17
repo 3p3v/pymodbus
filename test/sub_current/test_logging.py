@@ -4,7 +4,7 @@ from unittest import mock
 
 import pytest
 
-from pymodbus.logging import Log, pymodbus_apply_logging_config
+from pymodbus_3p3v.logging import Log, pymodbus_apply_logging_config
 
 
 class TestLogging:

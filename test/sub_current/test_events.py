@@ -1,13 +1,13 @@
 """Test events."""
 import pytest
 
-from pymodbus.events import (
+from pymodbus_3p3v.events import (
     CommunicationRestartEvent,
     EnteredListenModeEvent,
     RemoteReceiveEvent,
     RemoteSendEvent,
 )
-from pymodbus.exceptions import ParameterException
+from pymodbus_3p3v.exceptions import ParameterException
 
 
 class TestEvents:

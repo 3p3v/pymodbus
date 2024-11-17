@@ -50,7 +50,7 @@ except ImportError:
 # --------------------------------------------------------------------------- #
 # import the various client implementations
 # --------------------------------------------------------------------------- #
-from pymodbus.server import (
+from pymodbus_3p3v.server import (
     StartSerialServer,
     StartTcpServer,
     StartTlsServer,

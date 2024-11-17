@@ -125,7 +125,7 @@ Synchronous example
 
 ::
 
-    from pymodbus.client import ModbusTcpClient
+    from pymodbus_3p3v.client import ModbusTcpClient
 
     client = ModbusTcpClient('MyDevice.lan')   # Create client object
     client.connect()                           # connect to device
@@ -145,7 +145,7 @@ Asynchronous example
 
 ::
 
-    from pymodbus.client import AsyncModbusTcpClient
+    from pymodbus_3p3v.client import AsyncModbusTcpClient
 
     client = AsyncModbusTcpClient('MyDevice.lan')    # Create client object
     await client.connect()                           # connect to device, reconnect automatically

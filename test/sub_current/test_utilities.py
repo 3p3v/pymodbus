@@ -1,7 +1,7 @@
 """Test utilities."""
 import struct
 
-from pymodbus.utilities import (
+from pymodbus_3p3v.utilities import (
     default,
     dict_property,
     pack_bitstring,

@@ -8,8 +8,8 @@ bit based request/response messages:
 """
 import struct
 
-from pymodbus.pdu import ModbusExceptions
-from pymodbus.pdu.bit_read_message import (
+from pymodbus_3p3v.pdu import ModbusExceptions
+from pymodbus_3p3v.pdu.bit_read_message import (
     ReadBitsRequestBase,
     ReadBitsResponseBase,
     ReadCoilsRequest,

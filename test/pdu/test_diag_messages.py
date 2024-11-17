@@ -1,9 +1,9 @@
 """Test diag messages."""
 import pytest
 
-from pymodbus.constants import ModbusPlusOperation
-from pymodbus.exceptions import NotImplementedException
-from pymodbus.pdu.diag_message import (
+from pymodbus_3p3v.constants import ModbusPlusOperation
+from pymodbus_3p3v.exceptions import NotImplementedException
+from pymodbus_3p3v.pdu.diag_message import (
     ChangeAsciiInputDelimiterRequest,
     ChangeAsciiInputDelimiterResponse,
     ClearCountersRequest,

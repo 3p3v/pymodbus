@@ -29,10 +29,10 @@ except ImportError:
           for more information.")
     sys.exit(-1)
 
-from pymodbus.client import ModbusTcpClient
-from pymodbus.datastore import ModbusServerContext
-from pymodbus.datastore.remote import RemoteSlaveContext
-from pymodbus.server import StartAsyncTcpServer
+from pymodbus_3p3v.client import ModbusTcpClient
+from pymodbus_3p3v.datastore import ModbusServerContext
+from pymodbus_3p3v.datastore.remote import RemoteSlaveContext
+from pymodbus_3p3v.server import StartAsyncTcpServer
 
 
 _logger = logging.getLogger(__file__)

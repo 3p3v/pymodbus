@@ -6,8 +6,8 @@ from unittest import mock
 
 import pytest
 
-from pymodbus.logging import Log
-from pymodbus.transport import CommParams, CommType, ModbusProtocol
+from pymodbus_3p3v.logging import Log
+from pymodbus_3p3v.transport import CommParams, CommType, ModbusProtocol
 
 
 class DummyProtocol(ModbusProtocol):

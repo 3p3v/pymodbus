@@ -1,8 +1,8 @@
 """Test server context."""
 import pytest
 
-from pymodbus.datastore import ModbusServerContext, ModbusSlaveContext
-from pymodbus.exceptions import NoSuchSlaveException
+from pymodbus_3p3v.datastore import ModbusServerContext, ModbusSlaveContext
+from pymodbus_3p3v.exceptions import NoSuchSlaveException
 
 
 class TestServerSingleContext:

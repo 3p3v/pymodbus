@@ -5,9 +5,9 @@ mei based request/response messages:
 """
 import pytest
 
-from pymodbus.constants import DeviceInformation
-from pymodbus.device import ModbusControlBlock
-from pymodbus.pdu.mei_message import (
+from pymodbus_3p3v.constants import DeviceInformation
+from pymodbus_3p3v.device import ModbusControlBlock
+from pymodbus_3p3v.pdu.mei_message import (
     ReadDeviceInformationRequest,
     ReadDeviceInformationResponse,
 )

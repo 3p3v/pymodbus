@@ -11,7 +11,7 @@ import sys
 
 from recommonmark.transform import AutoStructify
 
-from pymodbus import __version__ as pymodbus_version
+from pymodbus_3p3v import __version__ as pymodbus_version
 
 
 # -- General configuration ------------------------------------------------

@@ -1,7 +1,7 @@
 """Test other messages."""
 from unittest import mock
 
-import pymodbus.pdu.other_message as pymodbus_message
+import pymodbus_3p3v.pdu.other_message as pymodbus_message
 
 
 class TestOtherMessage:

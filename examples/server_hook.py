@@ -7,13 +7,13 @@ manipulate the messages to/from the modbus server
 import asyncio
 import logging
 
-from pymodbus import FramerType, pymodbus_apply_logging_config
-from pymodbus.datastore import (
+from pymodbus_3p3v import FramerType, pymodbus_apply_logging_config
+from pymodbus_3p3v.datastore import (
     ModbusSequentialDataBlock,
     ModbusServerContext,
     ModbusSlaveContext,
 )
-from pymodbus.server import ModbusTcpServer
+from pymodbus_3p3v.server import ModbusTcpServer
 
 
 class Manipulator:

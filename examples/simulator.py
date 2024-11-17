@@ -10,10 +10,10 @@ for usage see documentation of simulator
 import asyncio
 import logging
 
-from pymodbus import FramerType
-from pymodbus.client import AsyncModbusTcpClient
-from pymodbus.datastore import ModbusSimulatorContext
-from pymodbus.server import ModbusSimulatorServer, get_simulator_commandline
+from pymodbus_3p3v import FramerType
+from pymodbus_3p3v.client import AsyncModbusTcpClient
+from pymodbus_3p3v.datastore import ModbusSimulatorContext
+from pymodbus_3p3v.server import ModbusSimulatorServer, get_simulator_commandline
 
 
 _logger = logging.getLogger(__file__)

@@ -42,8 +42,8 @@ except ImportError:
           for more information.")
     sys.exit(-1)
 
-import pymodbus.client as modbusClient
-from pymodbus import ModbusException
+import pymodbus_3p3v.client as modbusClient
+from pymodbus_3p3v import ModbusException
 
 
 _logger = logging.getLogger(__file__)

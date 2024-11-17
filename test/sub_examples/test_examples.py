@@ -27,9 +27,9 @@ from examples.server_updating import main as main_updating_server
 from examples.simple_async_client import run_async_simple_client
 from examples.simple_sync_client import run_sync_simple_client
 from examples.simulator import run_simulator
-from pymodbus.exceptions import ModbusException
-from pymodbus.pdu import ExceptionResponse
-from pymodbus.server import ServerAsyncStop, ServerStop
+from pymodbus_3p3v.exceptions import ModbusException
+from pymodbus_3p3v.pdu import ExceptionResponse
+from pymodbus_3p3v.server import ServerAsyncStop, ServerStop
 
 
 class TestExamples:

@@ -32,10 +32,10 @@ import argparse
 import asyncio
 import logging
 
-from pymodbus import pymodbus_apply_logging_config
-from pymodbus.datastore import ModbusServerContext, ModbusSimulatorContext
-from pymodbus.device import ModbusDeviceIdentification
-from pymodbus.server import StartAsyncTcpServer
+from pymodbus_3p3v import pymodbus_apply_logging_config
+from pymodbus_3p3v.datastore import ModbusServerContext, ModbusSimulatorContext
+from pymodbus_3p3v.device import ModbusDeviceIdentification
+from pymodbus_3p3v.server import StartAsyncTcpServer
 
 
 _logger = logging.getLogger(__file__)

@@ -45,15 +45,15 @@ except ImportError:
           for more information.")
     sys.exit(-1)
 
-from pymodbus import __version__ as pymodbus_version
-from pymodbus.datastore import (
+from pymodbus_3p3v import __version__ as pymodbus_version
+from pymodbus_3p3v.datastore import (
     ModbusSequentialDataBlock,
     ModbusServerContext,
     ModbusSlaveContext,
     ModbusSparseDataBlock,
 )
-from pymodbus.device import ModbusDeviceIdentification
-from pymodbus.server import (
+from pymodbus_3p3v.device import ModbusDeviceIdentification
+from pymodbus_3p3v.server import (
     StartAsyncSerialServer,
     StartAsyncTcpServer,
     StartAsyncTlsServer,

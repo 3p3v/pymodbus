@@ -1,14 +1,14 @@
 """Test pdu."""
 import pytest
 
-import pymodbus.pdu.bit_read_message as bit_r_msg
-import pymodbus.pdu.bit_write_message as bit_w_msg
-import pymodbus.pdu.diag_message as diag_msg
-import pymodbus.pdu.file_message as file_msg
-import pymodbus.pdu.mei_message as mei_msg
-import pymodbus.pdu.other_message as o_msg
-import pymodbus.pdu.register_read_message as reg_r_msg
-import pymodbus.pdu.register_write_message as reg_w_msg
+import pymodbus_3p3v.pdu.bit_read_message as bit_r_msg
+import pymodbus_3p3v.pdu.bit_write_message as bit_w_msg
+import pymodbus_3p3v.pdu.diag_message as diag_msg
+import pymodbus_3p3v.pdu.file_message as file_msg
+import pymodbus_3p3v.pdu.mei_message as mei_msg
+import pymodbus_3p3v.pdu.other_message as o_msg
+import pymodbus_3p3v.pdu.register_read_message as reg_r_msg
+import pymodbus_3p3v.pdu.register_write_message as reg_w_msg
 
 
 class TestPduType:

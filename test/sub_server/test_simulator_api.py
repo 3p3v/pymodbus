@@ -5,8 +5,8 @@ import json
 import pytest
 from aiohttp import ClientSession
 
-from pymodbus.server import ModbusSimulatorServer
-from pymodbus.server.simulator import http_server
+from pymodbus_3p3v.server import ModbusSimulatorServer
+from pymodbus_3p3v.server.simulator import http_server
 
 
 class TestSimulatorApi:

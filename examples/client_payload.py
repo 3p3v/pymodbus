@@ -19,8 +19,8 @@ except ImportError:
           for more information.")
     sys.exit(-1)
 
-from pymodbus.constants import Endian
-from pymodbus.payload import BinaryPayloadBuilder, BinaryPayloadDecoder
+from pymodbus_3p3v.constants import Endian
+from pymodbus_3p3v.payload import BinaryPayloadBuilder, BinaryPayloadDecoder
 
 
 ORDER_DICT = {"<": "LITTLE", ">": "BIG"}

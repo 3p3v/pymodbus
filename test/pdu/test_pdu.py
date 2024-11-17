@@ -1,8 +1,8 @@
 """Test pdu."""
 import pytest
 
-from pymodbus.exceptions import NotImplementedException
-from pymodbus.pdu import (
+from pymodbus_3p3v.exceptions import NotImplementedException
+from pymodbus_3p3v.pdu import (
     ExceptionResponse,
     ModbusExceptions,
     ModbusPDU,

@@ -1,17 +1,17 @@
 """Test transaction."""
 from unittest import mock
 
-from pymodbus.exceptions import (
+from pymodbus_3p3v.exceptions import (
     ModbusIOException,
 )
-from pymodbus.framer import (
+from pymodbus_3p3v.framer import (
     FramerAscii,
     FramerRTU,
     FramerSocket,
     FramerTLS,
 )
-from pymodbus.pdu import DecodePDU, ModbusPDU
-from pymodbus.transaction import (
+from pymodbus_3p3v.pdu import DecodePDU, ModbusPDU
+from pymodbus_3p3v.transaction import (
     ModbusTransactionManager,
     SyncModbusTransactionManager,
 )

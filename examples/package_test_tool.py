@@ -47,17 +47,17 @@ from __future__ import annotations
 import asyncio
 from collections.abc import Callable
 
-import pymodbus.client as modbusClient
-import pymodbus.server as modbusServer
-from pymodbus import FramerType, ModbusException, pymodbus_apply_logging_config
-from pymodbus.datastore import (
+import pymodbus_3p3v.client as modbusClient
+import pymodbus_3p3v.server as modbusServer
+from pymodbus_3p3v import FramerType, ModbusException, pymodbus_apply_logging_config
+from pymodbus_3p3v.datastore import (
     ModbusSequentialDataBlock,
     ModbusServerContext,
     ModbusSlaveContext,
 )
-from pymodbus.device import ModbusDeviceIdentification
-from pymodbus.logging import Log
-from pymodbus.transport import NULLMODEM_HOST, CommParams, CommType, ModbusProtocol
+from pymodbus_3p3v.device import ModbusDeviceIdentification
+from pymodbus_3p3v.logging import Log
+from pymodbus_3p3v.transport import NULLMODEM_HOST, CommParams, CommType, ModbusProtocol
 
 
 class TransportStub(ModbusProtocol):

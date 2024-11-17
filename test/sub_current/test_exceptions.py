@@ -1,7 +1,7 @@
 """Test exceptions."""
 import pytest
 
-from pymodbus.exceptions import (
+from pymodbus_3p3v.exceptions import (
     ConnectionException,
     ModbusException,
     ModbusIOException,

@@ -4,7 +4,7 @@ from unittest import mock
 
 import pytest
 
-from pymodbus.transport import (
+from pymodbus_3p3v.transport import (
     CommType,
     ModbusProtocol,
 )

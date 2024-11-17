@@ -13,8 +13,8 @@ The corresponding server must be started before e.g. as:
 # --------------------------------------------------------------------------- #
 # import the various client implementations
 # --------------------------------------------------------------------------- #
-import pymodbus.client as ModbusClient
-from pymodbus import (
+import pymodbus_3p3v.client as ModbusClient
+from pymodbus_3p3v import (
     ExceptionResponse,
     FramerType,
     ModbusException,

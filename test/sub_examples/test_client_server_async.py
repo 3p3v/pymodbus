@@ -18,7 +18,7 @@ from examples.client_async import (
     run_async_client,
     setup_async_client,
 )
-from pymodbus.exceptions import ModbusIOException
+from pymodbus_3p3v.exceptions import ModbusIOException
 
 
 @pytest.mark.parametrize(

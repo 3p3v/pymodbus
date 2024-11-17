@@ -8,7 +8,7 @@ import argparse
 import logging
 import os
 
-from pymodbus import pymodbus_apply_logging_config
+from pymodbus_3p3v import pymodbus_apply_logging_config
 
 
 _logger = logging.getLogger(__file__)

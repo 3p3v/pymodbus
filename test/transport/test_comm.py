@@ -6,12 +6,12 @@ from unittest import mock
 
 import pytest
 
-from pymodbus.logging import Log
-from pymodbus.transport import (
+from pymodbus_3p3v.logging import Log
+from pymodbus_3p3v.transport import (
     CommType,
     ModbusProtocol,
 )
-from pymodbus.transport.serialtransport import SerialTransport
+from pymodbus_3p3v.transport.serialtransport import SerialTransport
 
 
 FACTOR = 1.2 if platform.system().lower() != "windows" else 4.2

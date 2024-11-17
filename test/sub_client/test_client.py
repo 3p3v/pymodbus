@@ -6,23 +6,23 @@ from unittest import mock
 
 import pytest
 
-import pymodbus.client as lib_client
-import pymodbus.pdu.bit_read_message as pdu_bit_read
-import pymodbus.pdu.bit_write_message as pdu_bit_write
-import pymodbus.pdu.diag_message as pdu_diag
-import pymodbus.pdu.file_message as pdu_file_msg
-import pymodbus.pdu.other_message as pdu_other_msg
-import pymodbus.pdu.register_read_message as pdu_reg_read
-import pymodbus.pdu.register_write_message as pdu_req_write
+import pymodbus_3p3v.client as lib_client
+import pymodbus_3p3v.pdu.bit_read_message as pdu_bit_read
+import pymodbus_3p3v.pdu.bit_write_message as pdu_bit_write
+import pymodbus_3p3v.pdu.diag_message as pdu_diag
+import pymodbus_3p3v.pdu.file_message as pdu_file_msg
+import pymodbus_3p3v.pdu.other_message as pdu_other_msg
+import pymodbus_3p3v.pdu.register_read_message as pdu_reg_read
+import pymodbus_3p3v.pdu.register_write_message as pdu_req_write
 from examples.helper import get_certificate
-from pymodbus import FramerType
-from pymodbus.client.base import ModbusBaseClient
-from pymodbus.client.mixin import ModbusClientMixin
-from pymodbus.datastore import ModbusSlaveContext
-from pymodbus.datastore.store import ModbusSequentialDataBlock
-from pymodbus.exceptions import ConnectionException, ModbusException
-from pymodbus.pdu import ExceptionResponse, ModbusPDU
-from pymodbus.transport import CommParams, CommType
+from pymodbus_3p3v import FramerType
+from pymodbus_3p3v.client.base import ModbusBaseClient
+from pymodbus_3p3v.client.mixin import ModbusClientMixin
+from pymodbus_3p3v.datastore import ModbusSlaveContext
+from pymodbus_3p3v.datastore.store import ModbusSequentialDataBlock
+from pymodbus_3p3v.exceptions import ConnectionException, ModbusException
+from pymodbus_3p3v.pdu import ExceptionResponse, ModbusPDU
+from pymodbus_3p3v.transport import CommParams, CommType
 
 
 BASE_PORT = 6500

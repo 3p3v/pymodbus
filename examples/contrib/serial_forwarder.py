@@ -8,10 +8,10 @@ import asyncio
 import logging
 import signal
 
-from pymodbus.client import ModbusSerialClient
-from pymodbus.datastore import ModbusServerContext
-from pymodbus.datastore.remote import RemoteSlaveContext
-from pymodbus.server.async_io import ModbusTcpServer
+from pymodbus_3p3v.client import ModbusSerialClient
+from pymodbus_3p3v.datastore import ModbusServerContext
+from pymodbus_3p3v.datastore.remote import RemoteSlaveContext
+from pymodbus_3p3v.server.async_io import ModbusTcpServer
 
 
 _logger = logging.getLogger(__file__)

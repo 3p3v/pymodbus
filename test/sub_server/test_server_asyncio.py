@@ -8,15 +8,15 @@ from unittest import mock
 
 import pytest
 
-from pymodbus import FramerType
-from pymodbus.datastore import (
+from pymodbus_3p3v import FramerType
+from pymodbus_3p3v.datastore import (
     ModbusSequentialDataBlock,
     ModbusServerContext,
     ModbusSlaveContext,
 )
-from pymodbus.device import ModbusDeviceIdentification
-from pymodbus.exceptions import NoSuchSlaveException
-from pymodbus.server import ModbusTcpServer, ModbusTlsServer, ModbusUdpServer
+from pymodbus_3p3v.device import ModbusDeviceIdentification
+from pymodbus_3p3v.exceptions import NoSuchSlaveException
+from pymodbus_3p3v.server import ModbusTcpServer, ModbusTlsServer, ModbusUdpServer
 
 
 _logger = logging.getLogger()

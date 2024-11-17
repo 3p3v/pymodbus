@@ -4,12 +4,12 @@ from unittest import mock
 
 import pytest
 
-from pymodbus.datastore.remote import RemoteSlaveContext
-from pymodbus.exceptions import NotImplementedException
-from pymodbus.pdu import ExceptionResponse
-from pymodbus.pdu.bit_read_message import ReadCoilsResponse
-from pymodbus.pdu.bit_write_message import WriteMultipleCoilsResponse
-from pymodbus.pdu.register_read_message import ReadInputRegistersResponse
+from pymodbus_3p3v.datastore.remote import RemoteSlaveContext
+from pymodbus_3p3v.exceptions import NotImplementedException
+from pymodbus_3p3v.pdu import ExceptionResponse
+from pymodbus_3p3v.pdu.bit_read_message import ReadCoilsResponse
+from pymodbus_3p3v.pdu.bit_write_message import WriteMultipleCoilsResponse
+from pymodbus_3p3v.pdu.register_read_message import ReadInputRegistersResponse
 
 
 class TestRemoteDataStore:
